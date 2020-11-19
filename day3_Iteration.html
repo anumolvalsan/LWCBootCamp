@@ -1,0 +1,47 @@
+<template>
+    
+        <!---- Table using For Each-->
+        <lightning-card title="For Each Demo" icon-name="custom:custom14" >
+           <!-- <div class="slds-m-around_medium" align="left">-->
+                <table class="slds-table slds-table_bordered slds-table_striped" style="table-layout: fixed; width: 50%" >
+                    <thead>
+                        <tr>
+                            <th> Index</th>
+                            <th> Id</th>
+                            <th> Name</th>
+                            <th> Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={players} for:item="p" for:index="index">
+                            <tr key={p.Id}> 
+                                <td class="rowData">{index}</td>
+                                <td class="rowData">{p.Id}</td>
+                                <td class="rowData">{p.Name}</td>
+                                <td class="rowData">{p.Email}</td>
+                                
+                            </tr>                               
+                            
+                        </template>
+                    </tbody>
+                </table>
+            <!--</div>-->
+        </lightning-card>
+   
+    
+        <!---- Table using Iterator-->
+        <lightning-card title="Iterator Demo" icon-name="custom:custom14">
+           
+                <ul class="slds-m-around_medium">
+                    <template iterator:p={players}>
+                        <li key={p.value.id}>
+                            <div if:true={p.first} class="lborder"></div>
+                            {p.value.Name}-{p.value.Email}
+                            <div if:true={p.last} class="lborder"></div>
+                        </li>
+                    </template>
+                </ul>
+           
+        </lightning-card>
+    
+</template>
